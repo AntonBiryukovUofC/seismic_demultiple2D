@@ -1,0 +1,101 @@
+#-----------------------------------------------------------------
+#      JSON PARAMETER FILE FOR SOFI2D
+#-----------------------------------------------------------------
+# description:
+# description/name_ of the model: 
+#
+
+{
+"Domain Decomposition" : "comment",
+			"NPROCX" : "2",
+			"NPROCY" : "2",
+
+"FD stencil" : "comment",
+			"RSG" : "0",
+
+"FD order" : "comment",
+			"FDORDER" : "4",
+			"MAXRELERROR" : "1",
+
+"2-D Grid" : "comment",
+			"NX" : "NXX",
+			"NY" : "NYY",
+			"DH" : "DHH",
+
+"Time Stepping" : "comment",
+			"TIME" : "TMAX",
+			"DT" : "DTT",
+
+"Source" : "comment",
+
+			"SOURCE_SHAPE" : "SHAPESIG",
+			"SOURCE_TYPE" : "S_TYPE",
+			"PLANE_WAVE_DEPTH" : "0.0",
+			"PLANE_WAVE_ANGLE" : "0.0",
+			"TS" : "0.00",
+	
+			"SIGNAL_FILE" : "signal_mseis.tz",
+			"SRCREC" : "1",
+			"SOURCE_FILE" : "./sources/source.dat", 
+			"RUN_MULTIPLE_SHOTS" : "0",
+
+"Model" : "comment",
+			"READMOD" : "1",
+			"MFILE" : "model/NAME",
+
+"Q-approximation" : "comment",
+			"L" : "LL",
+			"FL1" : "FREQ1",
+            "FL2" : "FREQ2",  
+            "FL3" : "FREQ3", 
+            "FL4" : "FREQ4", 
+			"TAU" : "TTAU",
+
+"Boundary Conditions" : "comment",
+
+			"FREE_SURF" : "0", 
+			"FW" : "FWFRAME",
+			"DAMPING" : "DMPP",
+			"BOUNDARY" : "PERIODIC",
+
+"Snapshots" : "comment",
+			"SNAP" : "SNAP_ON",
+			"TSNAP1" : "TSNAPP1",
+			"TSNAP2" : "TSNAPP2",
+			"TSNAPINC" : "SSNAPINC",
+			"IDX" : "IDXX",
+			"IDY" : "IDYY",
+			"SNAP_FORMAT" : "3",
+			"SNAP_FILE" : "./snap/NAME",
+
+"Receiver" : "comment",
+			"SEISMO" : "SETYPE",
+			"READREC" : "1",
+			"REC_FILE" : "./receiver/receiver.dat",
+			"REFRECX, REFRECY" : "0.0 , 0.0",
+			"XREC1,YREC1" : "54.0 , 2106.0",
+			"XREC2,YREC2" : "5400.0 , 2106.0",
+			"NGEOPH" : "1",
+
+"Receiver array" : "comment",
+
+			"REC_ARRAY" : "0",
+			"REC_ARRAY_DEPTH" : "70.0",
+			"REC_ARRAY_DIST" : "40.0", 
+			"DRX" : "4",
+
+"Seismograms" : "comment",
+			"NDT" : "1",
+			"SEIS_FORMAT" : "3",
+			"SEIS_FILE" : "./su/NAME",
+
+"Monitoring the simulation" : "comment",
+			"LOG_FILE" : "log/NAME.log",
+            "OUT_TIMESTEP_INFO" : "200",
+			"LOG" : "1",
+
+"Checkpoints" : "comment",
+			"CHECKPTREAD" : "0",
+			"CHECKPTWRITE" : "0",
+			"CHECKPT_FILE" : "tmp/checkpoint_sofi2D",
+}
