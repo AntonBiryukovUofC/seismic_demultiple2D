@@ -97,10 +97,9 @@ plot(x_rec,40*y_rec,'vg','MarkerSize',10,'MarkerFaceColor','red');
 
 
 
-return
 
 % Writing into the template file 
-fileID=fopen('DENISE_forward_template.inp','r');
+fileID=fopen('./template_files/sofi2D_template.json','r');
 FILE=fread(fileID, [1 inf] ,'*char');
 fclose(fileID);
 
