@@ -7,16 +7,17 @@ clc
 
 % Set the velocity model over here
 
-Vp = [3000 5000 4000 7000];
+Vp = [3000 3000 4000 7000];
 Vs = Vp/1.7;
 rho =[2000 2000 2000 2000];
-depth = [30 20 30 30] % in # of cells !
+depth = [15 1 15 30] % in # of cells !
 abframe = 15;
-NXX = 100+2*abframe; % Length in X in # of cells !
+xbase = 60;
+NXX =xbase +2*abframe; % Length in X in # of cells !
 NYY = sum(depth) + abframe;
 name = 'sofi2D_test';
 % Time params
-T_max=2.5;
+T_max=4.5;
 dt_mod = 0.2E-3;
 % Source parameters
 source_frequency = 3 ; % [Hz]
@@ -30,11 +31,11 @@ LENGTH_IN_X = NXX*dh;
 
 LENGTH_IN_Y = NYY;
 first_rec = (abframe+1) * dh;
-last_rec = (abframe+1 + NXX) * dh;
+last_rec = (-abframe-1+ NXX) * dh;
  % Shape and type of the input signal :
 shape = 1;
 S_TYPE = 1; % 	(point_source): explosive=1;force_in_x=2;force_in_y=3;rotated_force=4" 
-x_rec = linspace(first_rec, last_rec, NXX);
+x_rec = linspace(first_rec, last_rec, xbase);
 y_rec = 1*ones(1,numel(x_rec)); % in m
 t_delays = 0*ones(1,numel(x_rec));
 freqs = source_frequency*ones(1,numel(x_rec));
@@ -65,24 +66,36 @@ end
 vps(levels(end):end,:) = Vp(end);
 vss(levels(end):end,:) = Vs(end);
 
+% add chevron notch
+ch_height = 9;
+level_notch = round(linspace(levels(3),levels(3)+ch_height,NXX/2));
+for i=1:NXX/2
+	vps(levels(3):level_notch(i),i) = Vp(3);
+	vss(levels(3):level_notch(i),i) = Vs(3);
 
-
+	vps(levels(3):level_notch(i),NXX-i) = Vp(3);
+	vss(levels(3):level_notch(i),NXX-i) = Vs(3);
+end
 
 
 
 
 hf = figure(1);
-set(hf,'Position',[10 10 600 800])
-imagesc((1:NXX)*dh,(1:NYY)*dh,vps);
+set(hf,'Position',[10 10 600 800]);
+pcolor((1:NXX)*dh,(1:NYY)*dh,vps);
 cmap = colormap('gray');
 cmap=flipud(cmap);
 colormap(cmap)
+shading interp
 hold all
 for i=1:numel(Vp)
-	hl = line([0 NXX*dh],[levels(i)*dh levels(i)*dh],'Color','r','LineWidth',4.5);
+	%hl = line([0 NXX*dh],[levels(i)*dh levels(i)*dh],'Color','r','LineWidth',4.5);
 end
+set(gca,'YDir','reverse')
+plot(x_rec,40*y_rec,'vg','MarkerSize',10,'MarkerFaceColor','red');
 
-plot(x_rec,y_rec,'vr','MarkerSize',10,'MarkerFaceColor','red');
+
+
 
 return
 
