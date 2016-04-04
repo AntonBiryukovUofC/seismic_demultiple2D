@@ -21,7 +21,7 @@
 			"DH" : "DHH",
 
 "Time Stepping" : "comment",
-			"TIME" : "T_MAX",
+			"TIME" : "TMAX",
 			"DT" : "DTT",
 
 "Source" : "comment",
@@ -45,7 +45,7 @@
 
 "Model" : "comment",
 			"READMOD" : "1",
-			"MFILE" : "MODEL_FOLDER",
+			"MFILE" : "model/NAME",
 			"WRITE_MODELFILES" : "2",
 
 "Q-approximation" : "comment",
@@ -57,15 +57,15 @@
                         "FREE_SURF" : "FREE_AT_TOP",
                         "BOUNDARY" : "0",
 
-			"FW" : "10",
-			"ABS_TYPE" : "1",
+			"FW" : "FWFRAME",
+			"ABS_TYPE" : "ABS_COND_TYPE",
 			"ABS_TYPE values : CPML-Boundary=1; Damping-Boundary=2" : "comment",
 			
 			"Parameter for CPML (ABS_TYPE=1)" : "comment",
 			"NPOWER" : "4.0",
 			"K_MAX_CPML" : "1.0",
 			"VPPML" : "VPMAX",
-			"FPML" : "F_SOURCE",
+			"FPML" : "SOURCE_FREQ",
 
 			"Parameter for ABS_TYPE=2" : "comment",
                         "DAMPING" : "8.0",
@@ -75,11 +75,11 @@
 			"SNAP" : "SNAP_ON",
 			"TSNAP1" : "TSNAPP1",
 			"TSNAP2" : "TSNAPP2",
-			"TSNAPINC" : "TSNAPINCC",
+			"TSNAPINC" : "SSNAPINC",
 			"IDX" : "IDXX",
 			"IDY" : "IDYY",
 			"SNAP_FORMAT" : "3",
-			"SNAP_FILE" : "./snap/test",
+			"SNAP_FILE" : "./snap/NAME",
 
 "Receiver" : "comment",
 			"SEISMO" : "4",
@@ -99,13 +99,13 @@
 
 "Seismograms" : "comment",
 			"NDT" : "1",
-			"SEIS_FORMAT" : "1",
-			"SEIS_FILE" : "./su/test",
+			"SEIS_FORMAT" : "3",
+			"SEIS_FILE" : "SEIS_FILE_FOLDER",
 
 "Monitoring the simulation" : "comment",
 			"LOG_FILE" : "log/test.log",
 			"LOG" : "1",
-			"OUT_TIMESTEP_INFO" : "50",
+			"OUT_TIMESTEP_INFO" : "500",
 
 "Checkpoints" : "comment",
 			"CHECKPTREAD" : "0",
