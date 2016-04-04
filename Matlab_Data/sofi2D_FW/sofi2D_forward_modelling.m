@@ -7,7 +7,7 @@ clc
 % Set the velocity model over here
 
 Vp = [3000 3000 3000 7000];
-VPMAX = max(Vp);
+VPMAX = max(Vp)/2;
 Vs = Vp/1.7;
 rho =[2000 2200 2200 2300];
 depth = [25 1 25 40] % in # of cells !
@@ -28,7 +28,7 @@ delete(['/home/geoanton/Matlab_Data/sofi2D/par/snap/*.*'])
 
 
 % Time params
-T_max=7.5;
+T_max=4.5;
 dt_mod = 8E-4;
 % Source parameters
 source_frequency = 4 ; % [Hz]
@@ -38,7 +38,7 @@ discr = 19;
 
 
 FREE_AT_TOP = 1;
-MULT_SHOT = 0;
+MULT_SHOT = 1;
 ABS_COND_TYPE = 1;
 
 dh = round(min_wavelength/discr);
